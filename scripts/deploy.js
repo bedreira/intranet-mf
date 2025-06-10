@@ -96,7 +96,30 @@ function writeWebConfig(appPath, isHost) {
   fs.writeFileSync(path.join(appPath, 'web.config'), configContent);
 }
 
+function updateVersion(appName) {
+  // Path to the version.json for this app
+  const versionFile = path.join(__dirname, '..', 'apps', appName, 'src', 'assets', 'version.json');
+  try {
+    let versionData = { version: '1.0.0', buildDate: '' };
+    if (fs.existsSync(versionFile)) {
+      versionData = JSON.parse(fs.readFileSync(versionFile, 'utf8'));
+    }
+    const [major, minor, patch] = versionData.version.split('.').map(Number);
+    versionData.version = `${major}.${minor}.${patch + 1}`;
+    versionData.buildDate = new Date().toISOString();
+    fs.writeFileSync(versionFile, JSON.stringify(versionData, null, 2));
+    console.log(`✅ Updated version for ${appName} to ${versionData.version}`);
+    return versionData;
+  } catch (err) {
+    console.error(`❌ Failed to update version for ${appName}:`, err.message);
+    return null;
+  }
+}
+
 function deployApp(appName, isHost) {
+  // Update version before build
+  const versionData = updateVersion(appName);
+
   const distPath = path.join('dist', 'apps', appName);
   const deployPath = path.join(DEPLOY_ROOT, appName);
 
@@ -114,7 +137,7 @@ function deployApp(appName, isHost) {
   // Write the correct web.config
   writeWebConfig(deployPath, isHost);
 
-  console.log(`✅ Deployed ${appName} to ${deployPath}`);
+  console.log(`✅ Deployed ${appName} to ${deployPath} (version: ${versionData?.version || 'unknown'})`);
 }
 
 function runAppCmd(command) {
@@ -154,6 +177,7 @@ async function main() {
     const app = APPS.find(a => a.name === argv.app);
     if (!app) {
       console.error(`❌ App '${argv.app}' not found in config.`);
+      console.log('Available apps:', APPS.map(a => a.name).join(', '));
       process.exit(1);
     }
     deployApp(app.name, app.isHost);
