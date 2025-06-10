@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@intranet-mf/examplePageLibFour": [
+        "libs/examplePageLibFour/src/index.ts"
+      ],
+      "@intranet-mf/examplePageLibOne": ["libs/examplePageLibOne/src/index.ts"],
+      "@intranet-mf/examplePageLibThree": [
+        "libs/examplePageLibThree/src/index.ts"
+      ],
+      "@intranet-mf/examplePageLibTwo": ["libs/examplePageLibTwo/src/index.ts"],
+      "examplePageRemoteFour/Routes": [
+        "apps/examplePageRemoteFour/src/app/remote-entry/entry.routes.ts"
+      ],
+      "examplePageRemoteOne/Routes": [
+        "apps/examplePageRemoteOne/src/app/remote-entry/entry.routes.ts"
+      ],
+      "examplePageRemoteThree/Routes": [
+        "apps/examplePageRemoteThree/src/app/remote-entry/entry.routes.ts"
+      ],
+      "examplePageRemoteTwo/Routes": [
+        "apps/examplePageRemoteTwo/src/app/remote-entry/entry.routes.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
