@@ -9,16 +9,12 @@ import config from './module-federation.config';
 export default withModuleFederation(
   {
     ...config,
-    /*
-     * Remote overrides for production.
-     * Each entry is a pair of a unique name and the URL where it is deployed.
-     *
-     * e.g.
-     * remotes: [
-     *   ['app1', 'https://app1.example.com'],
-     *   ['app2', 'https://app2.example.com'],
-     * ]
-     */
+    remotes: [
+      ['examplePageRemoteOne', 'http://localhost:8082/examplePageRemoteOne'],
+      ['examplePageRemoteTwo', 'http://localhost:8083/examplePageRemoteTwo'],
+      ['examplePageRemoteThree', 'http://localhost:8084/examplePageRemoteThree'],
+      ['examplePageRemoteFour', 'http://localhost:8085/examplePageRemoteFour'],
+    ],
   },
   { dts: false }
 );

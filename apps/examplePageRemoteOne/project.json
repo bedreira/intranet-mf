@@ -62,8 +62,8 @@
       "continuous": true,
       "executor": "@nx/angular:dev-server",
       "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "port": 8082,
+        "publicHost": "http://localhost:8082",
       },
       "configurations": {
         "production": {
@@ -90,7 +90,7 @@
       "defaultConfiguration": "production",
       "options": {
         "buildTarget": "examplePageRemoteOne:build",
-        "port": 4201,
+        "port": 8082,
         "watch": false
       },
       "configurations": {
