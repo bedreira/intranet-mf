@@ -108,10 +108,10 @@ function updateVersion(appName) {
     versionData.version = `${major}.${minor}.${patch + 1}`;
     versionData.buildDate = new Date().toISOString();
     fs.writeFileSync(versionFile, JSON.stringify(versionData, null, 2));
-    console.log(`✅ Updated version for ${appName} to ${versionData.version}`);
+    console.log(`Updated version for ${appName} to ${versionData.version}`);
     return versionData;
   } catch (err) {
-    console.error(`❌ Failed to update version for ${appName}:`, err.message);
+    console.error(`Failed to update version for ${appName}:`, err.message);
     return null;
   }
 }
@@ -137,7 +137,7 @@ function deployApp(appName, isHost) {
   // Write the correct web.config
   writeWebConfig(deployPath, isHost);
 
-  console.log(`✅ Deployed ${appName} to ${deployPath} (version: ${versionData?.version || 'unknown'})`);
+  console.log(`Deployed ${appName} to ${deployPath} (version: ${versionData?.version || 'unknown'})`);
 }
 
 function runAppCmd(command) {
@@ -156,18 +156,18 @@ function runAppCmd(command) {
 
 async function restartAppPool() {
   if (!argv.refreshpool) {
-    console.log('ℹ️ Skipping IIS app pool restart.');
+    console.log('ℹSkipping IIS app pool restart.');
     return;
   }
   try {
-    console.log('🔄 Restarting IIS app pool...');
+    console.log('Restarting IIS app pool...');
     runAppCmd(`stop apppool "${IIS_SITE_NAME}"`);
     await new Promise(res => setTimeout(res, 2000));
     runAppCmd(`start apppool "${IIS_SITE_NAME}"`);
     await new Promise(res => setTimeout(res, 3000));
-    console.log('✅ Application pool restarted.');
+    console.log('Application pool restarted.');
   } catch (error) {
-    console.error('❌ Error restarting IIS pool:', error.message);
+    console.error('Error restarting IIS pool:', error.message);
     process.exit(1);
   }
 }
@@ -176,7 +176,7 @@ async function main() {
   if (argv.app) {
     const app = APPS.find(a => a.name === argv.app);
     if (!app) {
-      console.error(`❌ App '${argv.app}' not found in config.`);
+      console.error(`App '${argv.app}' not found in config.`);
       console.log('Available apps:', APPS.map(a => a.name).join(', '));
       process.exit(1);
     }
@@ -187,7 +187,7 @@ async function main() {
     }
   }
   await restartAppPool();
-  console.log('🚀 Deployment complete!');
+  console.log('Deployment complete!');
 }
 
 
