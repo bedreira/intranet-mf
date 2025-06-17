@@ -9,12 +9,7 @@ import config from './module-federation.config';
 export default withModuleFederation(
   {
     ...config,
-    remotes: [
-      ['examplePageRemoteOne', 'http://localhost:8082/examplePageRemoteOne'],
-      ['examplePageRemoteTwo', 'http://localhost:8083/examplePageRemoteTwo'],
-      ['examplePageRemoteThree', 'http://localhost:8084/examplePageRemoteThree'],
-      ['examplePageRemoteFour', 'http://localhost:8085/examplePageRemoteFour'],
-    ],
+    remotes: [],
   },
   { dts: false }
 );

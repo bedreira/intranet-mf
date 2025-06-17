@@ -14,33 +14,7 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: [
-    'examplePageRemoteOne',
-    'examplePageRemoteTwo',
-    'examplePageRemoteThree',
-    'examplePageRemoteFour',
-  ],  
-  shared: (libraryName, sharedConfig) => {
-    if (
-      libraryName === '@angular/core' ||
-      libraryName === '@angular/common' ||
-      libraryName === '@angular/platform-browser' ||
-      libraryName === '@angular/router' ||
-      libraryName === '@angular/animations' ||
-      libraryName === '@angular/forms' ||
-      libraryName === '@angular/http' ||
-      libraryName === '@angular/material' ||
-      libraryName === '@angular/cdk' ||
-      libraryName === '@angular/flex-layout' ||
-      libraryName === '@angular/cdk' ||
-      libraryName === '@angular/flex-layout' ||
-      libraryName === '@angular/common/http'
-    ) {
-      return { ...sharedConfig, requiredVersion: false, singleton: true, eager: true };
-    }
-    return sharedConfig;
-  },
-
+  remotes: [],  
 };
 
 /**

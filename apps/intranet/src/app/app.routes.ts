@@ -1,26 +1,37 @@
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
+import { loadRemoteModule } from '@nx/angular/mf';
+import { AppComponent } from './app.component';
+
 
 export const appRoutes: Route[] = [
   {
-    path: 'examplePageRemoteFour',
+    path: 'examplePageRemoteOne',
     loadChildren: () =>
-      import('examplePageRemoteFour/Routes').then((m) => m!.remoteRoutes),
-  },
-  {
-    path: 'examplePageRemoteThree',
-    loadChildren: () =>
-      import('examplePageRemoteThree/Routes').then((m) => m!.remoteRoutes),
+      loadRemoteModule('examplePageRemoteOne', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
   },
   {
     path: 'examplePageRemoteTwo',
     loadChildren: () =>
-      import('examplePageRemoteTwo/Routes').then((m) => m!.remoteRoutes),
+      loadRemoteModule('examplePageRemoteTwo', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
   },
   {
-    path: 'examplePageRemoteOne',
+    path: 'examplePageRemoteThree',
     loadChildren: () =>
-      import('examplePageRemoteOne/Routes').then((m) => m!.remoteRoutes),
+      loadRemoteModule('examplePageRemoteThree', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
+  },
+  {
+    path: 'examplePageRemoteFour',
+    loadChildren: () =>
+      loadRemoteModule('examplePageRemoteFour', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
   },
   {
     path: '',
