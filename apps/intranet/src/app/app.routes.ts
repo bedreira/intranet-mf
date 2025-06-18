@@ -1,7 +1,6 @@
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nx/angular/mf';
-import { AppComponent } from './app.component';
 
 
 export const appRoutes: Route[] = [
