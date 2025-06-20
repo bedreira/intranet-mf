@@ -1,6 +1,6 @@
 {
-  "examplePageRemoteOne": "http://localhost:8082/",
-  "examplePageRemoteTwo": "http://localhost:8083/",
-  "examplePageRemoteThree": "http://localhost:8084/",
-  "examplePageRemoteFour": "http://localhost:8085/"
+  "examplePageRemoteOne": "http://localhost:8082/examplePageRemoteOne",
+  "examplePageRemoteTwo": "http://localhost:8083/examplePageRemoteTwo",
+  "examplePageRemoteThree": "http://localhost:8084/examplePageRemoteThree",
+  "examplePageRemoteFour": "http://localhost:8085/examplePageRemoteFour"
 }
